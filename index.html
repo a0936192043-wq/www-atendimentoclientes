@@ -1,636 +1,297 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MV Empréstimos - Crédito para Negativados</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    
-    <style>
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        :root {
-            --primary-color: #6c5ce7;
-            --secondary-color: #00b894;
-            --accent-color: #fdcb6e;
-            --dark-bg: #2d3436;
-            --light-bg: #f5f6fa;
-        }
-        
-        body {
-            overflow-x: hidden;
-        }
-        
-        /* Navbar */
-        .navbar {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
-            padding: 1rem 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: white !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 120px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,170.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
-            background-size: cover;
-            opacity: 0.1;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-        
-        /* Botão WhatsApp */
-        .btn-whatsapp {
-            background: #25d366;
-            color: white;
-            border-radius: 50px;
-            padding: 15px 40px;
-            font-weight: 600;
-            font-size: 1.2rem;
-            border: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            animation: pulse 2s infinite;
-        }
-        
-        .btn-whatsapp:hover {
-            background: #128C7E;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        
-        /* Cards de Serviços */
-        .service-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            height: 100%;
-            border: none;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(108, 92, 231, 0.2);
-        }
-        
-        .service-icon {
-            font-size: 4rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-        
-        /* Seção Porque Escolher */
-        .why-choose-item {
-            text-align: center;
-            padding: 30px;
-            background: linear-gradient(135deg, #ffffff, #f8f9fa);
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-        
-        .why-icon {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-        
-        /* Depoimentos */
-        .testimonial-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            margin-top: 50px;
-            height: 100%;
-        }
-        
-        .testimonial-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--accent-color);
-            margin: -90px auto 20px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .testimonial-img i {
-            font-size: 3rem;
-            color: white;
-        }
-        
-        .quote-icon {
-            font-size: 2rem;
-            color: var(--accent-color);
-            opacity: 0.3;
-            margin-bottom: 1rem;
-        }
-        
-        .rating {
-            color: #ffc107;
-            font-size: 1.2rem;
-            margin: 1rem 0;
-        }
-        
-        /* Estatísticas */
-        .stats-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 80px 0;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        /* Footer */
-        .footer {
-            background: var(--dark-bg);
-            color: white;
-            padding: 60px 0 20px;
-        }
-        
-        .footer h5 {
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
-        }
-        
-        .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            color: white;
-            margin-right: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background: var(--accent-color);
-            color: var(--dark-bg);
-            transform: translateY(-3px);
-        }
-        
-        /* Animações */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-        
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sassi Imóveis · Corretagem e avaliação</title>
+  <!-- Bootstrap 5 + ícones + fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    body { background-color: #f8fafc; }
+    .bg-primary-soft { background-color: #e6f0fa; }
+    .text-primary-dark { color: #0a3b5b; }
+    .border-brand { border-color: #b0c9da !important; }
+    .hero-wave {
+      background: linear-gradient(145deg, #ffffff 0%, #f2f7fc 100%);
+      border-bottom: 4px solid #d0e2f0;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 2rem 1rem 2rem 1rem;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(0,50,80,0.05);
+      box-shadow: 0 12px 24px -12px rgba(18, 52, 77, 0.15);
+    }
+    .stat-card:hover { transform: translateY(-6px); box-shadow: 0 24px 36px -16px #12344d33; }
+    .icon-circle {
+      width: 70px; height: 70px;
+      background: #1c5a8a;
+      color: white;
+      font-size: 2rem;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .bg-soft-accent { background-color: #eaf3fb; }
+    .footer-brand { background: #102b3f; color: #cfdeed; }
+    .btn-outline-brand {
+      border: 2px solid #1c5a8a;
+      color: #1c5a8a;
+      border-radius: 40px;
+      font-weight: 600;
+      padding: 0.6rem 1.8rem;
+    }
+    .btn-outline-brand:hover {
+      background: #1c5a8a;
+      color: white;
+    }
+    .img-float {
+      border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
+      box-shadow: 20px 20px 30px -10px #1f3d5a33;
+      transition: 0.25s ease;
+    }
+    .img-float:hover { border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%; }
+    .contact-line { border-left: 4px solid #1c5a8a; background: #ffffffd9; backdrop-filter: blur(2px); }
+    .cnpj-badge {
+      background: #0e2e44; color: #bed9f0; font-size: 0.9rem;
+      border-radius: 60px; padding: 0.4rem 1.2rem;
+    }
+    /* micro details */
+    .cidade-tag { background-color: #cbe4f5; color: #05314e; }
+  </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="bi bi-bank2"></i> MV Empréstimos
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#home">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#sobre">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#servicos">Serviços</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#depoimentos">Depoimentos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#contato">Contato</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 animate__animated animate__fadeInLeft">
-                    <h1 class="hero-title">Crédito para Negativados</h1>
-                    <p class="hero-subtitle">Realize seus sonhos mesmo com o nome restrito! Aprovação rápida e sem burocracia.</p>
-                    <a href="https://wa.me/5561998247814" target="_blank" class="btn btn-whatsapp">
-                        <i class="bi bi-whatsapp"></i> Solicitar Empréstimo
-                    </a>
-                </div>
-                <div class="col-lg-6 animate__animated animate__fadeInRight">
-                    <img src="https://img.freepik.com/fotos-gratis/empresario-sorridente-usando-tablete_23-2147770927.jpg" alt="Empréstimo" class="img-fluid rounded-4 shadow-lg">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre Section -->
-    <section id="sobre" class="py-5" style="background: var(--light-bg);">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://img.freepik.com/fotos-gratis/grupo-de-pessoas-trabalhando-em-equipe_23-2148936183.jpg" alt="Sobre MV Empréstimos" class="img-fluid rounded-4 shadow">
-                </div>
-                <div class="col-lg-6">
-                    <h2 class="display-5 fw-bold mb-4" style="color: var(--primary-color);">Sobre a MV Empréstimos</h2>
-                    <p class="lead mb-4">Somos especialistas em crédito para negativados e autônomos. Há mais de 10 anos ajudando brasileiros a realizarem seus sonhos.</p>
-                    <div class="row">
-                        <div class="col-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-check-circle-fill text-success fs-3 me-3"></i>
-                                <div>
-                                    <h5>+10.000</h5>
-                                    <p class="text-muted">Clientes atendidos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-star-fill text-warning fs-3 me-3"></i>
-                                <div>
-                                    <h5>98%</h5>
-                                    <p class="text-muted">Aprovação</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-currency-dollar text-success fs-3 me-3"></i>
-                                <div>
-                                    <h5>R$ 50 Milhões</h5>
-                                    <p class="text-muted">Em crédito concedido</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-clock-history text-primary fs-3 me-3"></i>
-                                <div>
-                                    <h5>24h</h5>
-                                    <p class="text-muted">Para aprovação</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Serviços -->
-    <section id="servicos" class="py-5">
-        <div class="container py-5">
-            <h2 class="text-center display-5 fw-bold mb-5" style="color: var(--primary-color);">Nossos Serviços</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <i class="bi bi-credit-card-2-front service-icon"></i>
-                        <h4>Empréstimo Pessoal</h4>
-                        <p class="text-muted">Valores de R$ 500 até R$ 50.000 com as melhores taxas do mercado.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <i class="bi bi-house-door service-icon"></i>
-                        <h4>Crédito Consignado</h4>
-                        <p class="text-muted">Para aposentados, pensionistas e servidores públicos.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <i class="bi bi-truck service-icon"></i>
-                        <h4>FGTS e Antecipação SAQUE</h4>
-                        <p class="text-muted">Antecipe seu FGTS e Saque Aniversário de forma rápida.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Porque Escolher -->
-    <section class="py-5" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
-        <div class="container py-5">
-            <h2 class="text-center display-5 fw-bold mb-5" style="color: var(--primary-color);">Por que escolher a MV?</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="why-choose-item">
-                        <i class="bi bi-shield-check why-icon"></i>
-                        <h4>Segurança Garantida</h4>
-                        <p class="text-muted">Processo 100% seguro e transparente</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="why-choose-item">
-                        <i class="bi bi-lightning-charge why-icon"></i>
-                        <h4>Aprovação Rápida</h4>
-                        <p class="text-muted">Resposta em até 24 horas</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="why-choose-item">
-                        <i class="bi bi-emoji-smile why-icon"></i>
-                        <h4>Sem Burocracia</h4>
-                        <p class="text-muted">Aceitamos negativados</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Depoimentos -->
-    <section id="depoimentos" class="py-5">
-        <div class="container py-5">
-            <h2 class="text-center display-5 fw-bold mb-5" style="color: var(--primary-color);">O que nossos clientes dizem</h2>
-            <div class="row g-4">
-                <!-- Depoimento 1 -->
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-img">
-                            <i class="bi bi-person-circle"></i>
-                        </div>
-                        <div class="quote-icon">
-                            <i class="bi bi-quote"></i>
-                        </div>
-                        <p class="mb-4">"Estava com o nome negativado e precisava muito de um dinheiro. A MV me ajudou quando ninguém mais podia. Consegui o empréstimo em 2 dias!"</p>
-                        <div class="rating">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                        </div>
-                        <h5 class="fw-bold mb-0">João Silva</h5>
-                        <small class="text-muted">Cliente desde 2023</small>
-                    </div>
-                </div>
-                
-                <!-- Depoimento 2 -->
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-img">
-                            <i class="bi bi-person-circle"></i>
-                        </div>
-                        <div class="quote-icon">
-                            <i class="bi bi-quote"></i>
-                        </div>
-                        <p class="mb-4">"Atendimento excelente! Me orientaram sobre a melhor opção de crédito e consegui quitar minhas dívidas. Super recomendo!"</p>
-                        <div class="rating">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                        </div>
-                        <h5 class="fw-bold mb-0">Maria Santos</h5>
-                        <small class="text-muted">Cliente desde 2024</small>
-                    </div>
-                </div>
-                
-                <!-- Depoimento 3 -->
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-img">
-                            <i class="bi bi-person-circle"></i>
-                        </div>
-                        <div class="quote-icon">
-                            <i class="bi bi-quote"></i>
-                        </div>
-                        <p class="mb-4">"Melhor taxa de juros que encontrei. Processo simples e rápido. Já indiquei para vários amigos e todos foram aprovados!"</p>
-                        <div class="rating">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                        </div>
-                        <h5 class="fw-bold mb-0">Carlos Oliveira</h5>
-                        <small class="text-muted">Cliente desde 2023</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Estatísticas -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-6 mb-4 mb-md-0">
-                    <div class="stat-item">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">Anos de Mercado</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-4 mb-md-0">
-                    <div class="stat-item">
-                        <div class="stat-number">15k+</div>
-                        <div class="stat-label">Clientes Felizes</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="stat-item">
-                        <div class="stat-number">24h</div>
-                        <div class="stat-label">Aprovação</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="stat-item">
-                        <div class="stat-number">98%</div>
-                        <div class="stat-label">Satisfação</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <div class="container py-5 text-center text-white">
-            <h2 class="display-4 fw-bold mb-4">Pronto para realizar seus sonhos?</h2>
-            <p class="lead mb-4">Solicite seu empréstimo agora mesmo e tenha uma resposta rápida!</p>
-            <a href="https://wa.me/5561998247814" target="_blank" class="btn btn-whatsapp btn-lg">
-                <i class="bi bi-whatsapp"></i> Falar com Especialista
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contato" class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h5>MV Empréstimos</h5>
-                    <p>Transformando sonhos em realidade com crédito acessível para todos.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-linkedin"></i></a>
-                        <a href="https://wa.me/5561998247814"><i class="bi bi-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h5>Links Rápidos</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#home" class="text-white text-decoration-none">Início</a></li>
-                        <li class="mb-2"><a href="#sobre" class="text-white text-decoration-none">Sobre</a></li>
-                        <li class="mb-2"><a href="#servicos" class="text-white text-decoration-none">Serviços</a></li>
-                        <li class="mb-2"><a href="#depoimentos" class="text-white text-decoration-none">Depoimentos</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Contato</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="bi bi-whatsapp me-2"></i> (61) 99824-7814</li>
-                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> contato@mvemprestimos.com.br</li>
-                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Brasília - DF</li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="mt-4 bg-white">
-            <div class="text-center mt-4">
-                <p class="mb-0">&copy; 2024 MV Empréstimos. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Botão flutuante WhatsApp -->
-    <a href="https://wa.me/5561998247814" target="_blank" style="position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-        <i class="bi bi-whatsapp"></i>
+<!-- cabeçalho com nome e selo ativo -->
+<nav class="navbar navbar-expand-lg bg-white border-bottom border-brand py-2">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-3 text-primary-dark" href="#">
+      <i class="bi bi-building me-2" style="color: #1c5a8a;"></i>SASSI IMÓVEIS
     </a>
+    <span class="badge bg-success bg-opacity-25 text-success-emphasis px-3 py-2 rounded-pill ms-2 d-none d-md-block">
+      <i class="bi bi-check-circle-fill me-1"></i> Ativa · desde 1981
+    </span>
+    <div class="ms-auto d-flex gap-2">
+      <a href="#" class="btn btn-outline-brand btn-sm" onclick="copiarTelefone()"><i class="bi bi-telephone-fill me-1"></i> (85) 3266-6210</a>
+    </div>
+  </div>
+</nav>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Animação Scroll -->
-    <script>
-        // Animação de scroll suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+<!-- HERO principal: corretagem e avaliação -->
+<section class="hero-wave pt-5 pb-4">
+  <div class="container py-4">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <span class="cnpj-badge"><i class="bi bi-qr-code me-1"></i> CNPJ 51.417.293/0001-48</span>
+          <span class="cidade-tag badge"><i class="bi bi-geo-alt-fill me-1"></i> Limeira/SP</span>
+        </div>
+        <h1 class="display-4 fw-bold lh-1 text-primary-dark mb-4">Compra, venda e <br>avaliação de imóveis</h1>
+        <p class="lead fs-4 text-secondary">Há <span class="fw-semibold">44 anos</span> construindo confiança e negócios sólidos no centro de Limeira. Especialista em <strong class="text-primary">corretagem e avaliação</strong> com ética e transparência.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="#contato" class="btn btn-primary btn-lg px-4 py-3 rounded-5" style="background:#1c5a8a; border: none;"><i class="bi bi-whatsapp me-2"></i>Falar com corretor</a>
+          <a href="#sobre" class="btn btn-outline-secondary btn-lg px-4 py-3 rounded-5 border-2"><i class="bi bi-building me-2"></i>Sobre a Sassi</a>
+        </div>
+        <!-- frase inovadora -->
+        <p class="mt-5 fst-italic fs-5"><i class="bi bi-quote me-2 text-primary opacity-50"></i>Mais que imóveis, conectamos pessoas a novos lares e oportunidades.</p>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src="https://images.unsplash.com/photo-1560518883-cefe59c5f5e7?w=600&auto=format&fit=crop&q=80" alt="Casa moderna e chave" class="img-fluid img-float" style="max-height: 420px; width: 100%; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Animação de aparecer ao scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
+<!-- cards de destaque: serviços principais -->
+<section class="container my-5 pt-3">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="stat-card p-4 h-100">
+        <div class="icon-circle mb-4"><i class="bi bi-arrow-left-right"></i></div>
+        <h3 class="h4 fw-bold">Corretagem compra & venda</h3>
+        <p class="text-secondary">Intermediação inteligente de imóveis residenciais e comerciais. Acesso a rede de clientes e documentação segura.</p>
+        <i class="bi bi-chevron-double-right text-primary"></i>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="stat-card p-4 h-100">
+        <div class="icon-circle mb-4"><i class="bi bi-clipboard-data"></i></div>
+        <h3 class="h4 fw-bold">Avaliação técnica</h3>
+        <p class="text-secondary">Laudo criterioso com valor justo de mercado para venda, inventário ou financiamento. Precisão e credibilidade.</p>
+        <i class="bi bi-chevron-double-right text-primary"></i>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="stat-card p-4 h-100">
+        <div class="icon-circle mb-4"><i class="bi bi-calendar-check"></i></div>
+        <h3 class="h4 fw-bold">Consultoria personalizada</h3>
+        <p class="text-secondary">Acompanhamento completo desde a visita até a assinatura. Mais de 4 décadas de experiência no Centro de Limeira.</p>
+        <i class="bi bi-chevron-double-right text-primary"></i>
+      </div>
+    </div>
+  </div>
+</section>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, observerOptions);
+<!-- Sobre / informações de registro / CNPJ e dados legais -->
+<section id="sobre" class="bg-soft-accent py-5">
+  <div class="container">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-lg-6">
+        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3"><i class="bi bi-file-earmark-text me-1"></i> REGISTRO ATIVO NA RECEITA</span>
+        <h2 class="fw-bold mb-4">Sassi Imóveis Ltda. <br><span class="text-primary">desde 15/06/1981</span></h2>
+        <ul class="list-unstyled">
+          <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Razão social:</strong> Sassi Imoveis Ltda.</li>
+          <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>CNPJ:</strong> 51.417.293/0001-48</li>
+          <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>CNAE principal:</strong> 68.21-8-01 — Corretagem na compra e venda e avaliação de imóveis</li>
+          <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Situação cadastral:</strong> <span class="badge bg-success">Ativa</span></li>
+          <li class="mb-3"><i class="bi bi-calendar2-week me-2 text-primary"></i> <strong>44 anos, 8 meses e 12 dias</strong> de tradição (abertura em 15/06/1981)</li>
+        </ul>
+        <!-- frase sobre imóveis -->
+        <div class="mt-4 p-3 bg-white rounded-4 contact-line ps-4">
+          <i class="bi bi-house-heart-fill text-primary fs-4 me-2"></i> “Avaliar com justiça é o primeiro passo para um ótimo negócio.”
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="bg-white p-4 rounded-5 shadow-sm">
+          <h5><i class="bi bi-pin-map-fill text-primary me-2"></i>Matriz (endereço oficial)</h5>
+          <p class="mb-1 fw-semibold">Rua Deputado Otavio Lopes, 427<br>Centro, Limeira - SP, 13480-021</p>
+          <hr class="my-3">
+          <p class="mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:jfrota@moinhocearense.com.br" class="text-decoration-none">jfrota@moinhocearense.com.br</a> <span class="text-muted">(correspondência)</span></p>
+          <p class="mb-0 mt-2"><i class="bi bi-telephone me-2"></i> <strong>(85) 3266-6210</strong>  |  (85) 3266-6290</p>
+          <div class="mt-3 small text-secondary">
+            <i class="bi bi-file-earmark-post me-1"></i> Correspondência: Sassi Imoveis Ltda. – Rua Dep. Otavio Lopes 427, Centro, Limeira SP – CEP 13480-021
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        document.querySelectorAll('.service-card, .why-choose-item, .testimonial-card').forEach(el => {
-            el.classList.add('animate-on-scroll');
-            observer.observe(el);
-        });
+<!-- imagens inovadoras / galeria com frases e ícones -->
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <span class="badge bg-primary-soft text-primary px-4 py-2 rounded-pill"><i class="bi bi-grid-3x3-gap-fill me-1"></i> PORTFÓLIO VISUAL</span>
+    <h3 class="fw-bold mt-2">Inovação em cada detalhe</h3>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-sm rounded-5 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop" class="card-img-top" style="height:200px; object-fit:cover;" alt="sala moderna">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-2"><i class="bi bi-stars fs-3 text-primary me-2"></i> <span class="fw-semibold">Ambientes que inspiram</span></div>
+          <p class="card-text text-secondary">Cada imóvel tem uma história. Nossa curadoria conecta pessoas ao lar dos sonhos.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-sm rounded-5 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&auto=format&fit=crop" class="card-img-top" style="height:200px; object-fit:cover;" alt="cozinha design">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-2"><i class="bi bi-arrow-up-short fs-3 text-primary me-2"></i> <span class="fw-semibold">Valorização garantida</span></div>
+          <p class="card-text text-secondary">Avaliação precisa que reflete o mercado atual de Limeira e região.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-sm rounded-5 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=500&auto=format&fit=crop" class="card-img-top" style="height:200px; object-fit:cover;" alt="escritório comercial">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-2"><i class="bi bi-bank2 fs-3 text-primary me-2"></i> <span class="fw-semibold">Comercial e residencial</span></div>
+          <p class="card-text text-secondary">Corretagem completa com soluções para empresas e famílias.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Fechar menu mobile ao clicar em link
-        const navLinks = document.querySelectorAll('.nav-link');
-        const navbarCollapse = document.querySelector('.navbar-collapse');
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (navbarCollapse.classList.contains('show')) {
-                    navbarCollapse.classList.remove('show');
-                }
-            });
-        });
-    </script>
+<!-- contato completo e localização -->
+<section id="contato" class="bg-white py-5 border-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5">
+        <h4 class="fw-bold mb-3"><i class="bi bi-chat-dots-fill text-primary me-2"></i>Fale com a Sassi</h4>
+        <div class="d-flex align-items-start gap-3 mb-4">
+          <i class="bi bi-envelope-at fs-2 text-primary"></i>
+          <div><strong>E-mail principal</strong><br><a href="mailto:jfrota@moinhocearense.com.br" class="text-decoration-none fs-5">jfrota@moinhocearense.com.br</a><br><span class="text-secondary">(também para correspondência)</span></div>
+        </div>
+        <div class="d-flex align-items-start gap-3 mb-4">
+          <i class="bi bi-telephone-forward fs-2 text-primary"></i>
+          <div><strong>Telefones comerciais</strong><br><span class="fs-5">(85) 3266-6210</span>  |  <span class="fs-5">(85) 3266-6290</span><br><span class="small text-muted">clique para copiar / ligação</span></div>
+        </div>
+        <div class="d-flex align-items-start gap-3">
+          <i class="bi bi-geo-alt fs-2 text-primary"></i>
+          <div><strong>Endereço para visita / matriz</strong><br>Rua Deputado Otavio Lopes, 427 – Centro<br>Limeira/SP – CEP 13480-021</div>
+        </div>
+        <div class="mt-4 p-3 bg-light rounded-4">
+          <i class="bi bi-info-circle me-1"></i> <strong>Dados completos p/ contrato:</strong> Sassi Imoveis Ltda | CNPJ 51.417.293/0001-48 | IE isento | Atividade: 68.21-8-01
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="bg-secondary bg-opacity-10 p-4 rounded-5">
+          <h5><i class="bi bi-map me-2"></i>Como chegar (centro de Limeira)</h5>
+          <!-- mapa estático simbólico e inovador -->
+          <div class="ratio ratio-16x9 mt-3 rounded-4 overflow-hidden border">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.0653922682614!2d-47.40453402466142!3d-22.56456207950831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8810f0c0dafb7%3A0x3efb6d0d042a6dc6!2sR.%20Dep.%20Otavio%20Lopes%2C%20427%20-%20Centro%2C%20Limeira%20-%20SP%2C%2013480-021!5e0!3m2!1spt-BR!2sbr!4v1712773901234!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="filter: grayscale(0.1) invert(0.02);"></iframe>
+          </div>
+          <p class="mt-3 mb-0"><i class="bi bi-pin-fill text-primary"></i> Exibindo local exato da Rua Deputado Otavio Lopes, 427. Venha nos conhecer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- faixa com número de anos / atuação -->
+<section class="bg-primary-dark py-4" style="background-color: #0e334b;">
+  <div class="container text-center text-white">
+    <div class="row justify-content-center">
+      <div class="col-md-8 d-flex flex-wrap align-items-center justify-content-center gap-4">
+        <i class="bi bi-trophy fs-1 text-warning"></i>
+        <span class="fw-light fs-3">44 anos de confiança no mercado imobiliário</span>
+        <i class="bi bi-star-fill text-warning ms-2"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer completo -->
+<footer class="footer-brand py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <p class="mb-1 fw-semibold">SASSI IMÓVEIS LTDA.</p>
+        <p class="small opacity-75">CNPJ 51.417.293/0001-48 · Corretagem e avaliação de imóveis desde 1981.<br>Registro CNAE: 68.21-8-01 · Situação Ativa na RFB</p>
+      </div>
+      <div class="col-md-4">
+        <p class="mb-1"><i class="bi bi-geo-alt"></i> Rua Dep. Otavio Lopes, 427 – Centro – Limeira/SP</p>
+        <p class="mb-1"><i class="bi bi-envelope"></i> jfrota@moinhocearense.com.br (preferencial)</p>
+      </div>
+      <div class="col-md-3 text-md-end">
+        <i class="bi bi-facebook me-3 fs-5"></i>
+        <i class="bi bi-instagram me-3 fs-5"></i>
+        <i class="bi bi-linkedin fs-5"></i>
+        <p class="small mt-2">© 2025 Sassi Imóveis – inovação e tradição</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- tiny script para copiar telefone (opcional) -->
+<script>
+  function copiarTelefone() {
+    navigator.clipboard?.writeText('(85) 3266-6210');
+    alert('Telefone (85) 3266-6210 copiado!');
+  }
+  // tiny smooth scroll para âncoras
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
