@@ -3,292 +3,349 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sassi Imóveis · Corretagem e avaliação</title>
-  <!-- Bootstrap 5 + ícones + fonts -->
+  <title>Bht Telecom · Fibra ótica e conexão</title>
+  <!-- Bootstrap 5 + ícones + fontes -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * { font-family: 'Inter', sans-serif; }
-    body { background-color: #f8fafc; }
-    .bg-primary-soft { background-color: #e6f0fa; }
-    .text-primary-dark { color: #0a3b5b; }
-    .border-brand { border-color: #b0c9da !important; }
-    .hero-wave {
-      background: linear-gradient(145deg, #ffffff 0%, #f2f7fc 100%);
-      border-bottom: 4px solid #d0e2f0;
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: #f4f9ff; }
+    .bg-gradient-bht {
+      background: linear-gradient(135deg, #0b1e33 0%, #123959 100%);
     }
-    .stat-card {
-      background: white;
-      border-radius: 2rem 1rem 2rem 1rem;
-      transition: all 0.2s ease;
-      border: 1px solid rgba(0,50,80,0.05);
-      box-shadow: 0 12px 24px -12px rgba(18, 52, 77, 0.15);
-    }
-    .stat-card:hover { transform: translateY(-6px); box-shadow: 0 24px 36px -16px #12344d33; }
-    .icon-circle {
-      width: 70px; height: 70px;
-      background: #1c5a8a;
+    .text-bht-blue { color: #103a5e; }
+    .bht-btn-primary {
+      background-color: #dd6b20;
+      border: none;
       color: white;
-      font-size: 2rem;
-      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      border-radius: 50px;
+      padding: 12px 32px;
+      font-weight: 600;
+      transition: 0.2s;
+      box-shadow: 0 8px 18px rgba(221, 107, 32, 0.3);
+    }
+    .bht-btn-primary:hover {
+      background-color: #bf580f;
+      transform: scale(1.02);
+      color: white;
+    }
+    .bht-btn-outline {
+      border: 2px solid #dd6b20;
+      background: transparent;
+      color: #dd6b20;
+      border-radius: 50px;
+      padding: 10px 28px;
+      font-weight: 600;
+    }
+    .bht-btn-outline:hover {
+      background: #dd6b20;
+      color: white;
+    }
+    .icon-orange-bg {
+      width: 70px; height: 70px;
+      background: rgba(221, 107, 32, 0.12);
+      color: #dd6b20;
+      font-size: 2.2rem;
+      border-radius: 30% 70% 50% 50% / 30% 40% 60% 70%;
       display: flex; align-items: center; justify-content: center;
     }
-    .bg-soft-accent { background-color: #eaf3fb; }
-    .footer-brand { background: #102b3f; color: #cfdeed; }
-    .btn-outline-brand {
-      border: 2px solid #1c5a8a;
-      color: #1c5a8a;
-      border-radius: 40px;
-      font-weight: 600;
-      padding: 0.6rem 1.8rem;
+    .card-plan {
+      border-radius: 30px;
+      background: white;
+      border: 1px solid rgba(0,55,100,0.08);
+      transition: 0.2s;
+      box-shadow: 0 15px 30px -12px rgba(16, 58, 94, 0.15);
     }
-    .btn-outline-brand:hover {
-      background: #1c5a8a;
+    .card-plan:hover {
+      transform: translateY(-8px);
+      border-color: #dd6b20;
+    }
+    .badge-bht {
+      background: #103a5e;
+      color: #d4e7fc;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      padding: 6px 16px;
+      border-radius: 60px;
+    }
+    .badge-orange {
+      background: #dd6b20;
       color: white;
+      padding: 6px 18px;
+      border-radius: 60px;
     }
-    .img-float {
-      border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
-      box-shadow: 20px 20px 30px -10px #1f3d5a33;
-      transition: 0.25s ease;
+    .feature-icon-sq {
+      background: #f0f7fe;
+      border-radius: 24px;
+      padding: 18px;
+      transition: 0.15s;
     }
-    .img-float:hover { border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%; }
-    .contact-line { border-left: 4px solid #1c5a8a; background: #ffffffd9; backdrop-filter: blur(2px); }
-    .cnpj-badge {
-      background: #0e2e44; color: #bed9f0; font-size: 0.9rem;
-      border-radius: 60px; padding: 0.4rem 1.2rem;
+    .footer-bht {
+      background: #082231;
+      color: #b0cbdf;
     }
-    /* micro details */
-    .cidade-tag { background-color: #cbe4f5; color: #05314e; }
+    .styled-map {
+      filter: grayscale(0.3) brightness(1.03);
+      border-radius: 40px 20px 40px 20px;
+      border: 3px solid white;
+      box-shadow: 0 18px 35px -12px #00000055;
+    }
+    .wave-shape {
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120"><path fill="%23f4f9ff" fill-opacity="1" d="M0,64L80,74.7C160,85,320,107,480,106.7C640,107,800,85,960,74.7C1120,64,1280,64,1360,64L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
+      height: 60px;
+    }
+    .ie-badge {
+      background: #173f5f;
+      border-radius: 30px;
+      padding: 5px 15px;
+      font-size: 0.8rem;
+    }
   </style>
 </head>
 <body>
 
-<!-- cabeçalho com nome e selo ativo -->
-<nav class="navbar navbar-expand-lg bg-white border-bottom border-brand py-2">
+<!-- topbar sutil com contato rápido -->
+<div class="bg-gradient-bht text-white py-2 small">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center">
+    <span><i class="bi bi-telephone-fill me-1" style="color:#dd6b20;"></i> (43) 3032-1616 | <i class="bi bi-envelope ms-2 me-1" style="color:#dd6b20;"></i> financeiro@bht.net.br</span>
+    <span class="badge-orange"><i class="bi bi-wifi me-1"></i> SCM · Ativa desde 2015</span>
+  </div>
+</div>
+
+<!-- Navbar clean -->
+<nav class="navbar navbar-expand-lg bg-white py-3 border-bottom border-1">
   <div class="container">
-    <a class="navbar-brand fw-bold fs-3 text-primary-dark" href="#">
-      <i class="bi bi-building me-2" style="color: #1c5a8a;"></i>SASSI IMÓVEIS
-    </a>
-    <span class="badge bg-success bg-opacity-25 text-success-emphasis px-3 py-2 rounded-pill ms-2 d-none d-md-block">
-      <i class="bi bi-check-circle-fill me-1"></i> Ativa · desde 1981
-    </span>
-    <div class="ms-auto d-flex gap-2">
-      <a href="#" class="btn btn-outline-brand btn-sm" onclick="copiarTelefone()"><i class="bi bi-telephone-fill me-1"></i> (85) 3266-6210</a>
+    <a class="navbar-brand fw-bold fs-2" href="#"><span style="color:#103a5e;">BHT</span> <span style="color:#dd6b20;">TELECOM</span></a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center gap-2">
+        <li class="nav-item"><a href="#planos" class="nav-link">Planos</a></li>
+        <li class="nav-item"><a href="#sobre" class="nav-link">Sobre</a></li>
+        <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+        <li class="nav-item"><a href="#" class="btn bht-btn-outline btn-sm ms-3"><i class="bi bi-person-circle me-1"></i> Área do cliente</a></li>
+      </ul>
     </div>
   </div>
 </nav>
 
-<!-- HERO principal: corretagem e avaliação -->
-<section class="hero-wave pt-5 pb-4">
-  <div class="container py-4">
+<!-- HERO: internet p/ Londrina -->
+<section class="position-relative" style="background: linear-gradient(102deg, #e3f0fd 0%, #ffffff 70%);">
+  <div class="container py-5">
     <div class="row align-items-center g-5">
       <div class="col-lg-6">
-        <div class="d-flex align-items-center gap-2 mb-3">
-          <span class="cnpj-badge"><i class="bi bi-qr-code me-1"></i> CNPJ 51.417.293/0001-48</span>
-          <span class="cidade-tag badge"><i class="bi bi-geo-alt-fill me-1"></i> Limeira/SP</span>
+        <div class="d-flex gap-2 mb-3">
+          <span class="badge-bht"><i class="bi bi-shield-check"></i> Ativa · SCM</span>
+          <span class="badge-bht"><i class="bi bi-geo-alt-fill"></i> Londrina/PR</span>
         </div>
-        <h1 class="display-4 fw-bold lh-1 text-primary-dark mb-4">Compra, venda e <br>avaliação de imóveis</h1>
-        <p class="lead fs-4 text-secondary">Há <span class="fw-semibold">44 anos</span> construindo confiança e negócios sólidos no centro de Limeira. Especialista em <strong class="text-primary">corretagem e avaliação</strong> com ética e transparência.</p>
-        <div class="d-flex flex-wrap gap-3 mt-4">
-          <a href="#contato" class="btn btn-primary btn-lg px-4 py-3 rounded-5" style="background:#1c5a8a; border: none;"><i class="bi bi-whatsapp me-2"></i>Falar com corretor</a>
-          <a href="#sobre" class="btn btn-outline-secondary btn-lg px-4 py-3 rounded-5 border-2"><i class="bi bi-building me-2"></i>Sobre a Sassi</a>
+        <h1 class="display-4 fw-bolder lh-1" style="color: #0b263b;">Conectividade<br>que <span style="color:#dd6b20;">aproxima</span></h1>
+        <p class="fs-4 text-secondary my-4"><i class="bi bi-lightning-charge-fill text-warning me-2"></i>Fibra ótica de alta performance para sua casa ou negócio. <strong class="text-bht-blue">11 anos de experiência</strong> em comunicação multimídia.</p>
+        <div class="d-flex gap-3">
+          <a href="#planos" class="btn bht-btn-primary btn-lg"><i class="bi bi-file-earmark-text me-2"></i>Ver planos</a>
+          <a href="#contato" class="btn bht-btn-outline btn-lg"><i class="bi bi-headset me-2"></i>Falar com suporte</a>
         </div>
-        <!-- frase inovadora -->
-        <p class="mt-5 fst-italic fs-5"><i class="bi bi-quote me-2 text-primary opacity-50"></i>Mais que imóveis, conectamos pessoas a novos lares e oportunidades.</p>
+        <!-- frase inovadora provedor -->
+        <p class="mt-5 fst-italic fs-5"><i class="bi bi-quote me-2" style="color:#dd6b20;"></i>Mais que internet: a gente entrega conexão com gente.</p>
       </div>
       <div class="col-lg-6 text-center">
-        <img src="https://images.unsplash.com/photo-1560518883-cefe59c5f5e7?w=600&auto=format&fit=crop&q=80" alt="Casa moderna e chave" class="img-fluid img-float" style="max-height: 420px; width: 100%; object-fit: cover;">
+        <img src="https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?w=700&auto=format&fit=crop&q=85" alt="roteador e fibra" class="img-fluid rounded-5 shadow-lg" style="border-radius: 60px 20px 60px 20px; max-height: 420px; width:100%; object-fit: cover;">
       </div>
     </div>
   </div>
+  <div class="wave-shape"></div>
 </section>
 
-<!-- cards de destaque: serviços principais -->
-<section class="container my-5 pt-3">
+<!-- cards de destaques: serviços SCM + ícones inovadores -->
+<section class="container" style="margin-top: -20px;">
   <div class="row g-4">
     <div class="col-md-4">
-      <div class="stat-card p-4 h-100">
-        <div class="icon-circle mb-4"><i class="bi bi-arrow-left-right"></i></div>
-        <h3 class="h4 fw-bold">Corretagem compra & venda</h3>
-        <p class="text-secondary">Intermediação inteligente de imóveis residenciais e comerciais. Acesso a rede de clientes e documentação segura.</p>
-        <i class="bi bi-chevron-double-right text-primary"></i>
+      <div class="card-plan p-4">
+        <div class="icon-orange-bg mb-4"><i class="bi bi-router"></i></div>
+        <h3 class="h4 fw-bold">Fibra ótica FTTH</h3>
+        <p class="text-secondary">Tecnologia de ponta com estabilidade, baixa latência e velocidade real. Perfeito para streaming e jogos.</p>
+        <i class="bi bi-arrow-right-short text-orange fs-3" style="color:#dd6b20;"></i>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="stat-card p-4 h-100">
-        <div class="icon-circle mb-4"><i class="bi bi-clipboard-data"></i></div>
-        <h3 class="h4 fw-bold">Avaliação técnica</h3>
-        <p class="text-secondary">Laudo criterioso com valor justo de mercado para venda, inventário ou financiamento. Precisão e credibilidade.</p>
-        <i class="bi bi-chevron-double-right text-primary"></i>
+      <div class="card-plan p-4">
+        <div class="icon-orange-bg mb-4"><i class="bi bi-building"></i></div>
+        <h3 class="h4 fw-bold">Link empresarial</h3>
+        <p class="text-secondary">Soluções dedicadas com IP fixo e SLA para seu negócio crescer sem downtime.</p>
+        <i class="bi bi-arrow-right-short text-orange fs-3" style="color:#dd6b20;"></i>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="stat-card p-4 h-100">
-        <div class="icon-circle mb-4"><i class="bi bi-calendar-check"></i></div>
-        <h3 class="h4 fw-bold">Consultoria personalizada</h3>
-        <p class="text-secondary">Acompanhamento completo desde a visita até a assinatura. Mais de 4 décadas de experiência no Centro de Limeira.</p>
-        <i class="bi bi-chevron-double-right text-primary"></i>
+      <div class="card-plan p-4">
+        <div class="icon-orange-bg mb-4"><i class="bi bi-tv"></i></div>
+        <h3 class="h4 fw-bold">TV + Streaming</h3>
+        <p class="text-secondary">Combine internet com canais ao vivo e streaming. Diversão integrada na fibra.</p>
+        <i class="bi bi-arrow-right-short text-orange fs-3" style="color:#dd6b20;"></i>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Sobre / informações de registro / CNPJ e dados legais -->
-<section id="sobre" class="bg-soft-accent py-5">
-  <div class="container">
-    <div class="row justify-content-between align-items-center">
+<!-- Sobre / registro / dados completos da Bht Telecom -->
+<section id="sobre" class="bg-white py-5">
+  <div class="container py-4">
+    <div class="row align-items-center">
       <div class="col-lg-6">
-        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3"><i class="bi bi-file-earmark-text me-1"></i> REGISTRO ATIVO NA RECEITA</span>
-        <h2 class="fw-bold mb-4">Sassi Imóveis Ltda. <br><span class="text-primary">desde 15/06/1981</span></h2>
+        <span class="badge-orange mb-3"><i class="bi bi-file-earmark-text me-1"></i> REGISTRO RECEITA FEDERAL</span>
+        <h2 class="fw-bold mb-4">Bht Telecom LTDA <br><span class="text-secondary">desde 23/01/2015</span></h2>
         <ul class="list-unstyled">
-          <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Razão social:</strong> Sassi Imoveis Ltda.</li>
-          <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>CNPJ:</strong> 51.417.293/0001-48</li>
-          <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>CNAE principal:</strong> 68.21-8-01 — Corretagem na compra e venda e avaliação de imóveis</li>
-          <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Situação cadastral:</strong> <span class="badge bg-success">Ativa</span></li>
-          <li class="mb-3"><i class="bi bi-calendar2-week me-2 text-primary"></i> <strong>44 anos, 8 meses e 12 dias</strong> de tradição (abertura em 15/06/1981)</li>
+          <li class="mb-3"><i class="bi bi-check-circle-fill me-2" style="color:#dd6b20;"></i> <strong>Razão social:</strong> Bht Telecom LTDA</li>
+          <li class="mb-3"><i class="bi bi-check-circle-fill me-2" style="color:#dd6b20;"></i> <strong>CNPJ:</strong> 21.735.163/0001-92</li>
+          <li class="mb-3"><i class="bi bi-check-circle-fill me-2" style="color:#dd6b20;"></i> <strong>Inscrição Estadual (PR):</strong> 90767889-09</li>
+          <li class="mb-3"><i class="bi bi-check-circle-fill me-2" style="color:#dd6b20;"></i> <strong>CNAE principal:</strong> 61.10-8-03 — Serviços de Comunicação Multimídia (SCM)</li>
+          <li class="mb-3"><i class="bi bi-check-circle-fill me-2" style="color:#dd6b20;"></i> <strong>Situação cadastral:</strong> <span class="badge bg-success">Ativa</span></li>
+          <li class="mb-3"><i class="bi bi-calendar2-week me-2" style="color:#dd6b20;"></i> <strong>11 anos, 1 mês e 4 dias</strong> de operação (fundada em 23/01/2015)</li>
         </ul>
-        <!-- frase sobre imóveis -->
-        <div class="mt-4 p-3 bg-white rounded-4 contact-line ps-4">
-          <i class="bi bi-house-heart-fill text-primary fs-4 me-2"></i> “Avaliar com justiça é o primeiro passo para um ótimo negócio.”
+        <!-- frase inovadora -->
+        <div class="p-3 bg-light rounded-4 mt-3 d-flex gap-3 align-items-center">
+          <i class="bi bi-globe2 fs-1" style="color:#dd6b20;"></i>
+          <span class="fst-italic">“Internet de verdade é a que conecta pessoas e negócios sem fronteiras.”</span>
         </div>
       </div>
-      <div class="col-lg-5">
-        <div class="bg-white p-4 rounded-5 shadow-sm">
-          <h5><i class="bi bi-pin-map-fill text-primary me-2"></i>Matriz (endereço oficial)</h5>
-          <p class="mb-1 fw-semibold">Rua Deputado Otavio Lopes, 427<br>Centro, Limeira - SP, 13480-021</p>
-          <hr class="my-3">
-          <p class="mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:jfrota@moinhocearense.com.br" class="text-decoration-none">jfrota@moinhocearense.com.br</a> <span class="text-muted">(correspondência)</span></p>
-          <p class="mb-0 mt-2"><i class="bi bi-telephone me-2"></i> <strong>(85) 3266-6210</strong>  |  (85) 3266-6290</p>
-          <div class="mt-3 small text-secondary">
-            <i class="bi bi-file-earmark-post me-1"></i> Correspondência: Sassi Imoveis Ltda. – Rua Dep. Otavio Lopes 427, Centro, Limeira SP – CEP 13480-021
-          </div>
+      <div class="col-lg-6">
+        <div class="bg-gradient-bht text-white p-4 rounded-5 shadow-lg">
+          <h5 class="mb-3"><i class="bi bi-pin-map-fill me-2" style="color:#dd6b20;"></i> Matriz / correspondência</h5>
+          <p class="mb-2 fs-5">Avenida Salgado Filho, 104<br>California, Londrina - PR, 86040-000</p>
+          <hr class="opacity-25">
+          <p class="mb-1"><i class="bi bi-envelope me-2"></i> financeiro@bht.net.br  (financeiro/comercial)</p>
+          <p class="mb-1"><i class="bi bi-telephone me-2"></i> (43) 3032-1616 (central de atendimento)</p>
+          <p class="mb-0 small mt-3 opacity-75"><i class="bi bi-envelope-paper me-1"></i> Correspondência: Bht Telecom LTDA, Avenida Salgado Filho 104, California, Londrina PR — CEP 86040-000</p>
+        </div>
+        <!-- icone extra -->
+        <div class="d-flex justify-content-end mt-3">
+          <span class="ie-badge text-white"><i class="bi bi-upc-scan me-1"></i> IE 90767889-09 · PR</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- imagens inovadoras / galeria com frases e ícones -->
-<section class="container py-5">
+<!-- Planos (diferenciais e velocidade) -->
+<section id="planos" class="container py-4">
   <div class="text-center mb-5">
-    <span class="badge bg-primary-soft text-primary px-4 py-2 rounded-pill"><i class="bi bi-grid-3x3-gap-fill me-1"></i> PORTFÓLIO VISUAL</span>
-    <h3 class="fw-bold mt-2">Inovação em cada detalhe</h3>
+    <span class="badge-bht px-4 py-2"><i class="bi bi-speedometer2 me-1"></i> ESCOLHA SEU PLANO</span>
+    <h3 class="fw-bold mt-3">Navegue sem limites com a Bht</h3>
   </div>
   <div class="row g-4">
     <div class="col-md-4">
-      <div class="card h-100 border-0 shadow-sm rounded-5 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop" class="card-img-top" style="height:200px; object-fit:cover;" alt="sala moderna">
-        <div class="card-body">
-          <div class="d-flex align-items-center mb-2"><i class="bi bi-stars fs-3 text-primary me-2"></i> <span class="fw-semibold">Ambientes que inspiram</span></div>
-          <p class="card-text text-secondary">Cada imóvel tem uma história. Nossa curadoria conecta pessoas ao lar dos sonhos.</p>
-        </div>
+      <div class="card-plan p-4 text-center">
+        <i class="bi bi-wifi fs-1" style="color:#dd6b20;"></i>
+        <h4 class="fw-bold mt-3">200 Mega</h4>
+        <p class="text-secondary">Ideal para navegação e streaming simultâneo.</p>
+        <p class="display-6 fw-bold">R$ 89,90</p>
+        <span class="small text-muted">+ frete de instalação grátis</span><br>
+        <a href="#" class="btn bht-btn-outline w-100 mt-3">Assinar</a>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="card h-100 border-0 shadow-sm rounded-5 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&auto=format&fit=crop" class="card-img-top" style="height:200px; object-fit:cover;" alt="cozinha design">
-        <div class="card-body">
-          <div class="d-flex align-items-center mb-2"><i class="bi bi-arrow-up-short fs-3 text-primary me-2"></i> <span class="fw-semibold">Valorização garantida</span></div>
-          <p class="card-text text-secondary">Avaliação precisa que reflete o mercado atual de Limeira e região.</p>
-        </div>
+      <div class="card-plan p-4 text-center border-warning border-2">
+        <div class="d-flex justify-content-center"><span class="badge-orange px-3 py-1">MAIS ESCOLHIDO</span></div>
+        <i class="bi bi-lightning-charge-fill fs-1" style="color:#dd6b20;"></i>
+        <h4 class="fw-bold mt-3">500 Mega</h4>
+        <p class="text-secondary">Perfeito para gamers e home office.</p>
+        <p class="display-6 fw-bold">R$ 129,90</p>
+        <span class="small text-muted">Wi-Fi 6 incluso</span><br>
+        <a href="#" class="btn bht-btn-primary w-100 mt-3">Assinar</a>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="card h-100 border-0 shadow-sm rounded-5 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=500&auto=format&fit=crop" class="card-img-top" style="height:200px; object-fit:cover;" alt="escritório comercial">
-        <div class="card-body">
-          <div class="d-flex align-items-center mb-2"><i class="bi bi-bank2 fs-3 text-primary me-2"></i> <span class="fw-semibold">Comercial e residencial</span></div>
-          <p class="card-text text-secondary">Corretagem completa com soluções para empresas e famílias.</p>
-        </div>
+      <div class="card-plan p-4 text-center">
+        <i class="bi bi-rocket-takeoff fs-1" style="color:#dd6b20;"></i>
+        <h4 class="fw-bold mt-3">1 Giga</h4>
+        <p class="text-secondary">Ultravelocidade para vários dispositivos.</p>
+        <p class="display-6 fw-bold">R$ 199,90</p>
+        <span class="small text-muted">Suporte prioritário</span><br>
+        <a href="#" class="btn bht-btn-outline w-100 mt-3">Assinar</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- contato completo e localização -->
-<section id="contato" class="bg-white py-5 border-top">
+<!-- imagens inovadoras / infraestrutura -->
+<section class="bg-light py-5">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-md-6">
+        <img src="https://images.unsplash.com/photo-1620971047547-e31d030ce2fb?w=700&auto=format&fit=crop&q=85" class="img-fluid styled-map" alt="fibra ótica instalador">
+      </div>
+      <div class="col-md-6">
+        <div class="feature-icon-sq mb-3 w-50"><i class="bi bi-cpu fs-1" style="color:#dd6b20;"></i></div>
+        <h3 class="fw-bold">Tecnologia de ponta para Londrina</h3>
+        <p>Nossa rede 100% fibra ótica foi projetada para oferecer alta disponibilidade. Atendemos residências e empresas com a qualidade que só uma provedora ativa e comprometida pode oferecer.</p>
+        <ul class="list-unstyled">
+          <li><i class="bi bi-check-lg me-2" style="color:#dd6b20;"></i>Backbone redundante</li>
+          <li><i class="bi bi-check-lg me-2" style="color:#dd6b20;"></i>Equipe técnica local</li>
+          <li><i class="bi bi-check-lg me-2" style="color:#dd6b20;"></i>Monitoramento 24/7</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- contato + localização (mapa) -->
+<section id="contato" class="container py-5">
+  <div class="row g-5">
+    <div class="col-lg-5">
+      <h4 class="fw-bold"><i class="bi bi-chat-dots-fill me-2" style="color:#dd6b20;"></i>Fale com a Bht Telecom</h4>
+      <p class="mt-4"><i class="bi bi-envelope-at fs-5 me-3" style="color:#dd6b20;"></i> <strong>E-mail financeiro:</strong><br><a href="mailto:financeiro@bht.net.br" class="text-decoration-none fs-5">financeiro@bht.net.br</a></p>
+      <p><i class="bi bi-telephone-forward fs-5 me-3" style="color:#dd6b20;"></i> <strong>Telefone fixo:</strong><br><span class="fs-5">(43) 3032-1616</span> <span class="badge bg-secondary">Ligar</span></p>
+      <p><i class="bi bi-geo-alt fs-5 me-3" style="color:#dd6b20;"></i> <strong>Matriz / atendimento presencial:</strong><br>Avenida Salgado Filho, 104 - California, Londrina/PR</p>
+      <div class="mt-4 p-3 bg-light rounded-4">
+        <p class="mb-1"><i class="bi bi-file-earmark-text me-1"></i> <strong>Dados completos (para nota fiscal):</strong><br>Bht Telecom LTDA | CNPJ 21.735.163/0001-92 | IE 90767889-09 | CNAE 6110-8/03</p>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="bg-white p-3 rounded-5 shadow">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.843253703243!2d-51.1653581!3d-23.3103287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94eb435a4afb35c7%3A0x1a7b7d3e7b9f3d0!2sAv.%20Salgado%20Filho%2C%20104%20-%20California%2C%20Londrina%20-%20PR%2C%2086040-000!5e0!3m2!1spt-BR!2sbr!4v1712775309234!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border-radius: 30px;"></iframe>
+        </div>
+        <p class="mt-2 text-center small"><i class="bi bi-geo-alt-fill text-primary"></i> Avenida Salgado Filho, 104 – California. Venha nos visitar!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- banner anos de atuação -->
+<section class="bg-gradient-bht py-4">
+  <div class="container text-white text-center">
+    <i class="bi bi-stars fs-1 text-warning"></i>
+    <span class="d-block fs-3 fw-light">Desde 2015 conectando Londrina com fibra ótica de qualidade</span>
+    <span class="badge-orange mt-2 d-inline-block">11 anos de inovação e confiança</span>
+  </div>
+</section>
+
+<!-- footer -->
+<footer class="footer-bht py-4">
   <div class="container">
     <div class="row">
-      <div class="col-lg-5">
-        <h4 class="fw-bold mb-3"><i class="bi bi-chat-dots-fill text-primary me-2"></i>Fale com a Sassi</h4>
-        <div class="d-flex align-items-start gap-3 mb-4">
-          <i class="bi bi-envelope-at fs-2 text-primary"></i>
-          <div><strong>E-mail principal</strong><br><a href="mailto:jfrota@moinhocearense.com.br" class="text-decoration-none fs-5">jfrota@moinhocearense.com.br</a><br><span class="text-secondary">(também para correspondência)</span></div>
-        </div>
-        <div class="d-flex align-items-start gap-3 mb-4">
-          <i class="bi bi-telephone-forward fs-2 text-primary"></i>
-          <div><strong>Telefones comerciais</strong><br><span class="fs-5">(85) 3266-6210</span>  |  <span class="fs-5">(85) 3266-6290</span><br><span class="small text-muted">clique para copiar / ligação</span></div>
-        </div>
-        <div class="d-flex align-items-start gap-3">
-          <i class="bi bi-geo-alt fs-2 text-primary"></i>
-          <div><strong>Endereço para visita / matriz</strong><br>Rua Deputado Otavio Lopes, 427 – Centro<br>Limeira/SP – CEP 13480-021</div>
-        </div>
-        <div class="mt-4 p-3 bg-light rounded-4">
-          <i class="bi bi-info-circle me-1"></i> <strong>Dados completos p/ contrato:</strong> Sassi Imoveis Ltda | CNPJ 51.417.293/0001-48 | IE isento | Atividade: 68.21-8-01
-        </div>
-      </div>
-      <div class="col-lg-7">
-        <div class="bg-secondary bg-opacity-10 p-4 rounded-5">
-          <h5><i class="bi bi-map me-2"></i>Como chegar (centro de Limeira)</h5>
-          <!-- mapa estático simbólico e inovador -->
-          <div class="ratio ratio-16x9 mt-3 rounded-4 overflow-hidden border">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.0653922682614!2d-47.40453402466142!3d-22.56456207950831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8810f0c0dafb7%3A0x3efb6d0d042a6dc6!2sR.%20Dep.%20Otavio%20Lopes%2C%20427%20-%20Centro%2C%20Limeira%20-%20SP%2C%2013480-021!5e0!3m2!1spt-BR!2sbr!4v1712773901234!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="filter: grayscale(0.1) invert(0.02);"></iframe>
-          </div>
-          <p class="mt-3 mb-0"><i class="bi bi-pin-fill text-primary"></i> Exibindo local exato da Rua Deputado Otavio Lopes, 427. Venha nos conhecer.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- faixa com número de anos / atuação -->
-<section class="bg-primary-dark py-4" style="background-color: #0e334b;">
-  <div class="container text-center text-white">
-    <div class="row justify-content-center">
-      <div class="col-md-8 d-flex flex-wrap align-items-center justify-content-center gap-4">
-        <i class="bi bi-trophy fs-1 text-warning"></i>
-        <span class="fw-light fs-3">44 anos de confiança no mercado imobiliário</span>
-        <i class="bi bi-star-fill text-warning ms-2"></i>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- footer completo -->
-<footer class="footer-brand py-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5">
-        <p class="mb-1 fw-semibold">SASSI IMÓVEIS LTDA.</p>
-        <p class="small opacity-75">CNPJ 51.417.293/0001-48 · Corretagem e avaliação de imóveis desde 1981.<br>Registro CNAE: 68.21-8-01 · Situação Ativa na RFB</p>
+      <div class="col-md-6">
+        <p class="fw-semibold">BHT TELECOM LTDA</p>
+        <p class="small opacity-75">CNPJ 21.735.163/0001-92 · IE 90767889-09<br>SCM – Serviço de Comunicação Multimídia · Ativa</p>
       </div>
       <div class="col-md-4">
-        <p class="mb-1"><i class="bi bi-geo-alt"></i> Rua Dep. Otavio Lopes, 427 – Centro – Limeira/SP</p>
-        <p class="mb-1"><i class="bi bi-envelope"></i> jfrota@moinhocearense.com.br (preferencial)</p>
+        <p class="small"><i class="bi bi-geo-alt"></i> Av. Salgado Filho, 104 - California, Londrina/PR</p>
+        <p class="small"><i class="bi bi-envelope"></i> financeiro@bht.net.br</p>
       </div>
-      <div class="col-md-3 text-md-end">
-        <i class="bi bi-facebook me-3 fs-5"></i>
-        <i class="bi bi-instagram me-3 fs-5"></i>
-        <i class="bi bi-linkedin fs-5"></i>
-        <p class="small mt-2">© 2025 Sassi Imóveis – inovação e tradição</p>
+      <div class="col-md-2 text-md-end">
+        <i class="bi bi-instagram me-2 fs-5"></i>
+        <i class="bi bi-facebook me-2 fs-5"></i>
+        <i class="bi bi-whatsapp fs-5"></i>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- tiny script para copiar telefone (opcional) -->
+<!-- script smooth + copy opt (opcional) -->
 <script>
-  function copiarTelefone() {
-    navigator.clipboard?.writeText('(85) 3266-6210');
-    alert('Telefone (85) 3266-6210 copiado!');
-  }
-  // tiny smooth scroll para âncoras
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function(e){
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
-      if(target) target.scrollIntoView({ behavior: 'smooth' });
+      if(target) target.scrollIntoView({behavior: 'smooth'});
     });
   });
 </script>
